@@ -1,0 +1,42 @@
+package com.idat.ec4.impl;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.idat.ec4.model.Producto;
+import com.idat.ec4.repository.ProductoRepository;
+import com.idat.ec4.service.ProductoService;
+
+@Service
+public class ProductoImpl implements ProductoService{
+	
+	@Autowired
+	ProductoRepository ProductoDAO;
+
+	@Override
+	public List<Producto> listarProducto() {
+		return ProductoDAO.findAll();
+	}
+
+	@Override
+	public Producto crearProducto(Producto producto) {
+		return ProductoDAO.save(producto);
+	}
+
+	@Override
+	public Producto editarProducto(Producto producto) {
+		return ProductoDAO.save(producto);
+	}
+
+	@Override
+	public void eliminarProducto(Long id) {
+		ProductoDAO.deleteById(id);
+	}
+
+	@Override
+	public Producto ListarPorId(Long id) {
+		return ProductoDAO.findById(id).orElse(null);
+	}
+}

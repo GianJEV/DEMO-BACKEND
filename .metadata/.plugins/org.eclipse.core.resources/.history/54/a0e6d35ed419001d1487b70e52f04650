@@ -1,0 +1,5 @@
+package com.idat.ec4.model;
+
+public class Categoria {
+
+}

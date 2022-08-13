@@ -1,0 +1,29 @@
+package com.idat.ec4.model;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="proveedor")
+public class Proveedor {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long idProveedor;
+	
+	@Column(name="nombre", length = 50, nullable = false, unique = true)
+	private String nombre;
+	
+	@Column(name="contacto", length = 50, nullable = false)
+	private String contacto;
+	
+	@Column(name="direccion", length = 50, nullable = false)
+	private String direccion;
+
+	@Column(name="telefono", length = 9, nullable = false)
+	private String telefono;
+}

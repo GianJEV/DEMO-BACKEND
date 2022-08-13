@@ -1,0 +1,42 @@
+package com.idat.ec4.impl;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.idat.ec4.model.Proveedor;
+import com.idat.ec4.repository.ProveedorRepository;
+import com.idat.ec4.service.ProveedorService;
+
+@Service
+public class ProveedorImpl implements ProveedorService{
+	
+	@Autowired
+	ProveedorRepository ProveedorDAO;
+
+	@Override
+	public List<Proveedor> listarProveedor() {
+		return ProveedorDAO.findAll();
+	}
+
+	@Override
+	public Proveedor crearProveedor(Proveedor proveedor) {
+		return ProveedorDAO.save(proveedor);
+	}
+
+	@Override
+	public Proveedor editarProveedor(Proveedor proveedor) {
+		return ProveedorDAO.save(proveedor);
+	}
+
+	@Override
+	public void eliminarProveedor(Long id) {
+		ProveedorDAO.deleteById(id);
+	}
+
+	@Override
+	public Proveedor ListarPorId(Long id) {
+		return ProveedorDAO.findById(id).orElse(null);
+	}
+}

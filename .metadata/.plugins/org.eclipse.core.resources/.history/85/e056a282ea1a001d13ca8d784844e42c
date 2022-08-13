@@ -1,0 +1,40 @@
+package com.idat.ec4.impl;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.idat.ec4.model.Categoria;
+import com.idat.ec4.repository.CategoriaRepository;
+import com.idat.ec4.service.CategoriaService;
+
+public class CategoriaImpl implements CategoriaService {
+
+	@Autowired
+	CategoriaRepository CategoriaDAO;
+
+	@Override
+	public List<Categoria> listarCategoria() {
+		return CategoriaDAO.findAll();
+	}
+
+	@Override
+	public Categoria crearCategoria(Categoria categoria) {
+		return CategoriaDAO.save(categoria);
+	}
+
+	@Override
+	public Categoria editarCategoria(Categoria categoria) {
+		return CategoriaDAO.save(categoria);
+	}
+
+	@Override
+	public void eliminarCategoria(Long id) {
+		CategoriaDAO.deleteById(id);
+	}
+
+	@Override
+	public Categoria ListarPorId(Long id) {
+		return CategoriaDAO.findById(id).orElse(null);
+	}
+}
